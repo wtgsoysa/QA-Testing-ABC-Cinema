@@ -119,5 +119,162 @@
 
 ---
 
+## Admin Website
+
+1. **Login**
+#### Happy Path:
+    - Admin can log in with a valid email and password.
+    - Admin is redirected to the Admin Panel Home after successful login.
+  
+
+#### Edge Cases:
+- **Login Issues**:
+    - Invalid Login Credentials: Display an error message ("Invalid credentials").
+    - Server Timeout: Display a retry option ("Unable to log in. Please try again later").
+
+---
+
+2. **Movie Management**
+#### Happy Path:
+    - Admin can search for a movie from TMDB API using a search bar.
+    - Movie details (Name, IMDB rating, Duration, Parental Guidance, Description) are displayed in a preview.
+    - Admin can select one of the four categories:
+        ( Screen Home Now , Coming Soon Home , Screen Now Main , Coming Soon Main )
+    - Admin can publish the movie, which updates the Admin Home with a movie card (status: published).
+    - Admin can edit the movie category or delete the movie from the published list.
+
+
+
+#### Edge Cases:
+- **Search Issues**:
+    - Invalid Login Credentials: Display an error message ("Invalid credentials").
+    - Server Timeout: Display a retry option ("Unable to log in. Please try again later").
+
+
+- **Publishing Issues**:
+    - Failure to publish movie due to server issues: Show a retry option.
+    - Missing category selection: Prompt the admin to select a category before publishing.
+
+
+- **Edit/Delete Issues**:
+    - Attempt to edit a non-existent movie: Prevent action and notify the admin
+    - Failure to delete a movie: Show an error message and log the issue.
+
+---
+
+3. **User Management**
+#### Happy Path:
+    - Admin can view a list of all registered users, including details (Name, Email, Registration Date).
+    - Admin can generate a PDF report of the user list.
+    - Admin can delete a user, which removes them from the system.
+
+
+#### Edge Cases:
+- **User List Issues:**:
+    - No users registered: Display a "No users found" message.
+    - Failed to retrieve the user list: Show an error ("Unable to load user data").
+
+
+- **PDF Generation Issues:**:
+    - Failure to generate the report: Notify the admin and provide a retry option.
+
+- **Delete Issues:**:
+    - Attempt to delete a user already removed: Prevent action and notify the admin.
+
+     
+___
+
+4. **Ticket Management**
+#### Happy Path:
+    - Admin can view a list of all booked tickets.
+    - Admin can generate a PDF report of the ticket list
+    - Admin can delete tickets from the system.
+
+
+#### Edge Cases:
+- **Ticket List Issues:**
+    - No tickets available: Display a "No tickets found" message.
+    - Failed to retrieve ticket data: Notify the admin.
+
+
+- **PDF Generation Issues:**:
+    - Failure to generate the report: Notify the admin and provide a retry option.
+
+- **Delete Issues:**
+    - Attempt to delete a ticket already removed: Prevent action and notify the admin.
+
+
+___
+
+5. **Review Management**
+#### Happy Path:
+    - Admin can view all reviews submitted by users.
+    - Admin can generate a PDF report of all reviews.
+    - Admin can delete reviews from the system.
+
+
+#### Edge Cases:
+- **Review List Issues:**
+    - No reviews available: Display a "No reviews found" message.
+    - Failed to load review data: Notify the admin.
+
+
+- **PDF Generation Issues:**:
+    - Failure to generate the report: Notify the admin and provide a retry option.
+
+- **Delete Issues:**
+    - Attempt to delete a review already removed: Prevent action and notify the admin.
+
+___
+
+5. **Logout**
+#### Happy Path:
+    - Admin can log out of the system and return to the login page
+   
+
+
+#### Edge Cases:
+- **Logout Issues:**
+    - Logout attempt during a server issue: Notify the admin and ensure a retry option.
+
+
+
+___
+
+### Non-Functional Requirements
+1. **Performance**
+    - Admin Panel should handle up to 50 concurrent admin users.
+    - Actions like movie publishing, user deletion, and report generation should take less than 2 seconds.
+
+2. **Security**
+    - Implement secure authentication with salted and hashed passwords.
+    - Ensure role-based access control: Only admins can access this panel.
+    - Sensitive operations (delete, publish) should require confirmation.
+
+3. **Usability**
+    - Provide clear messages for errors, successes, and confirmations.
+    - The Admin Panel should be responsive and compatible with mobile and desktop views.
+    - Include tooltips and guides for first-time admins.
+
+4. **Reliability
+    - The Admin Panel should maintain 99.9% uptime.
+    - Ensure graceful degradation for third-party dependencies (e.g., TMDB API).
+   
+5. **Scalability**
+    - The system should scale to support more movie categories or additional management features.
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Version History
-- **Version 1.0**: Initial requirements documented on `Date`.
+- **Version 1.0**: Initial requirements documented on `2025/01/22`.
