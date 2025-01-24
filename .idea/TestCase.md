@@ -263,3 +263,275 @@
 - **Actual Result:** [After Execution]
 - **Status:** [Pass / Fail]
 - **Remarks:** [Any Observation]
+
+
+# Admin Test Cases Documentation
+
+---
+
+### Test Case 021
+**Test Case ID:** TC_Admin_021  
+**Test Scenario:** Admin logs in with correct credentials.  
+**Precondition:** Admin account exists.  
+**Test Steps:**
+1. Navigate to the admin login page.
+2. Enter valid admin credentials (username and password).
+3. Click the "Login" button.  
+   **Expected Results:** Admin successfully logs in and is redirected to the dashboard.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 022
+**Test Case ID:** TC_Admin_022  
+**Test Scenario:** Admin logs in with incorrect credentials.  
+**Precondition:** Admin account exists.  
+**Test Steps:**
+1. Navigate to the admin login page.
+2. Enter invalid admin credentials (wrong email or password).
+3. Click the "Login" button.  
+   **Expected Results:** Login fails, and an error message is displayed: "Invalid email or password."  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 023
+**Test Case ID:** TC_Admin_023  
+**Test Scenario:** Add a movie.  
+**Precondition:** Admin is logged in.  
+**Test Steps:**
+1. Navigate to the "Movie Management" section.
+2. Click the "Add Movie" button.
+3. Check that the navigation page is correct: “Add Your Movie Details.”  
+   **Expected Results:** Navigate to “Add Your Movie Details” page successfully.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 024
+**Test Case ID:** TC_Admin_024  
+**Test Scenario:** Add a Movie by Title.  
+**Precondition:** Open the “Add Your Movie Details.”  
+**Test Steps:**
+1. Navigate to the “Add Your Movie Details.”
+2. Search for a movie by title.
+3. Click the “Search” Button.  
+   **Expected Results:** Display the movie data, and the movie title matches the searched movie title.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 025
+**Test Case ID:** TC_Admin_025  
+**Test Scenario:** Verify the search movie details.  
+**Precondition:** Admin needs to search for a movie by title.  
+**Test Steps:**
+1. Search for a movie by title.
+2. Verify the details (Movie Title, Duration, Parental Control, IMDB, Movie Description, Movie genres).  
+   **Expected Results:** Preview details (Movie Title, Duration, Parental Control, IMDB, Movie Description, Movie genres) are correct.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 026
+**Test Case ID:** TC_Admin_026  
+**Test Scenario:** Select the movie category and publish.  
+**Precondition:** Search for a movie by title.  
+**Test Steps:**
+1. Search for a movie by title.
+2. Select the dropdown menu options:
+  - Screening Now Home
+  - Coming Soon Home
+  - Screening Now Main
+  - Coming Soon Main
+3. Click the “Publish Movie” Button.  
+   **Expected Results:** Publish Movie Card displays in the Movie Management or Main website's relevant section selected by admin.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 027
+**Test Case ID:** TC_Admin_027  
+**Test Scenario:** Verify the “Discard” Button.  
+**Precondition:** Search for a movie by title.  
+**Test Steps:**
+1. Search for a movie by title.
+2. Click the “Discard” Button.
+3. Verify that all searched movie details are removed.  
+   **Expected Results:** Search movie details are successfully removed.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 028
+**Test Case ID:** TC_Admin_028  
+**Test Scenario:** Edit details of an existing movie.  
+**Precondition:** Admin is logged in, and movies exist in the system.  
+**Test Steps:**
+1. Navigate to the "Movie Management" section.
+2. Select a movie listing and click the "Edit" button.
+3. Navigate to the “Edit Movie Status.”
+4. Update the movie status.
+5. Click the “Update Status” button.  
+   **Expected Results:** Successfully update the “Movie Status.”  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 029
+**Test Case ID:** TC_Admin_029  
+**Test Scenario:** Delete an existing movie.  
+**Precondition:** Admin is logged in, and movies exist in the system.  
+**Test Steps:**
+1. Navigate to the "Movie Management" section.
+2. Select a movie and click the "Delete" button.  
+   **Expected Results:** Movie is successfully deleted from this section.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 030
+**Test Case ID:** TC_Admin_030  
+**Test Scenario:** Display all registered users.  
+**Precondition:** Admin is logged in, and users exist in the system.  
+**Test Steps:**
+1. Navigate to the "User Management" section.
+2. View the list of all registered users.  
+   **Expected Results:** All user details are displayed in a paginated table.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 031
+**Test Case ID:** TC_Admin_031  
+**Test Scenario:** Attempt to generate a report when no users exist in the system.  
+**Precondition:** Admin is logged in, and no users exist.  
+**Test Steps:**
+1. Navigate to the "User Management" section.
+2. Click the "Generate Report" button.  
+   **Expected Results:** Report generation fails, and an error message is displayed: "No user data available to generate a report."  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 032
+**Test Case ID:** TC_Admin_032  
+**Test Scenario:** Delete an existing user.  
+**Precondition:** Admin is logged in, and users exist in the system.  
+**Test Steps:**
+1. Navigate to the "User Management" section.
+2. Select a user and click the "Delete" button.
+3. Confirm the deletion.  
+   **Expected Results:** User is successfully deleted, and a confirmation message is displayed.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 033
+**Test Case ID:** TC_Admin_033  
+**Test Scenario:** View all booked tickets.  
+**Precondition:** Admin is logged in, and tickets are booked.  
+**Test Steps:**
+1. Navigate to the "Ticket Management" section.
+2. View the list of all booked tickets.  
+   **Expected Results:** All booked tickets are displayed.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 034
+**Test Case ID:** TC_Admin_034  
+**Test Scenario:** Attempt to generate a ticket report when no tickets are booked.  
+**Precondition:** No tickets are booked.  
+**Test Steps:**
+1. Navigate to the "Ticket Management" section.
+2. Click the "Generate Report" button.  
+   **Expected Results:** Report generation fails, and an error message is displayed: "No ticket data available to generate a report."  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 035
+**Test Case ID:** TC_Admin_035  
+**Test Scenario:** Delete booking.  
+**Precondition:** Admin is logged in, and users exist in the system.  
+**Test Steps:**
+1. Navigate to the "Ticket Management" section.
+2. Select a ticket and click the "Delete" button.  
+   **Expected Results:** Ticket is successfully deleted, and a confirmation message is displayed.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 036
+**Test Case ID:** TC_Admin_036  
+**Test Scenario:** Display all reviews.  
+**Precondition:** Admin is logged in.  
+**Test Steps:**
+1. Navigate to the “Review Management” section.
+2. View the list of all reviews.  
+   **Expected Results:** All review details are displayed in a paginated table.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 037
+**Test Case ID:** TC_Admin_037  
+**Test Scenario:** Attempt to generate a report.  
+**Precondition:** Admin is logged in.  
+**Test Steps:**
+1. Navigate to the "Review Management" section.
+2. Generate a report.  
+   **Expected Results:** Successfully generate a report and download.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
+### Test Case 038
+**Test Case ID:** TC_Admin_038  
+**Test Scenario:** Delete a review.  
+**Precondition:** Admin is logged in.  
+**Test Steps:**
+1. Navigate to the "Review Management" section.
+2. Select a review and click "Delete."  
+   **Expected Results:** Successfully delete the review.  
+   **Actual Result:** [After Execution]  
+   **Status:** [Pass / Fail]  
+   **Remarks:** [Any Observation]
+
+---
+
