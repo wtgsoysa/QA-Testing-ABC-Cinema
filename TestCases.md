@@ -350,10 +350,10 @@
 **Test Steps:**
 1. Search for a movie by title.
 2. Select the dropdown menu options:
-  - Screening Now Home
-  - Coming Soon Home
-  - Screening Now Main
-  - Coming Soon Main
+- Screening Now Home
+- Coming Soon Home
+- Screening Now Main
+- Coming Soon Main
 3. Click the “Publish Movie” Button.  
    **Expected Results:** Publish Movie Card displays in the Movie Management or Main website's relevant section selected by admin.  
    **Actual Result:** [After Execution]  
