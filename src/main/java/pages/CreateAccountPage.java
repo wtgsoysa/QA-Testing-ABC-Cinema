@@ -50,8 +50,8 @@ public class CreateAccountPage {
         driver.findElement(createButton).click();
     }
 
-    public void getLoginPageHeading() {
-        driver.findElement(loginPageHeading).getText();
+    public String getLoginPageHeading() {
+        return driver.findElement(loginPageHeading).getText();
     }
 
 

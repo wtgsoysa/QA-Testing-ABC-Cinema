@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CreateAccountPage;
@@ -83,5 +84,10 @@ public class CreateAccountTest extends TestBase {
         } else {
             System.out.println("Actual Result: User was shown an error message indicating the email is already in use.");
         }
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
     }
 }
