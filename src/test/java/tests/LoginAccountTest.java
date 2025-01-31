@@ -62,20 +62,11 @@ public class LoginAccountTest extends TestBase {
         loginAccountPage.logout();
 
 
-
-
-
-
         // Test Case 004: Login with incorrect credential
         System.out.println("\nTest Case ID: TC_Main_004");
         System.out.println("Test Scenario: Login with invalid email.");
 
         loginAccountPage.loginButton();
-
-
-
-
-
 
         String expectedErrorMessage = "Please enter a valid email address.";
         String actualErrorMessage = loginAccountPage.gerErrorMessage();
@@ -87,16 +78,51 @@ public class LoginAccountTest extends TestBase {
             System.out.println("Actual Result: No proper error message displayed for invalid email format.");
             System.out.println("Status: FAIL");
         }
+    }
 
+    @Test(priority = 2)
+    public void resetPassword() {
 
+        System.out.println("\nTest Case ID: TC_Main_005");
+        System.out.println("Test Scenario: Password reset using a valid email.");
 
+        createAccountPage.clickLoginButton();
 
+        //Click the forgot password button
+        loginAccountPage.forgotPassword();
 
+        String expectedResetPageHeading = loginAccountPage.getResetPageHeading();
+        String actualResetPageHeading = "Reset Your Password" ;
+
+        if(actualResetPageHeading.equals(expectedResetPageHeading)) {
+            System.out.println("Pre-Condition : User Successfully Navigate to the reset password page");
+        }
+        else{
+            System.out.println("Pre-Condition : User Unsuccessfully Navigate to the reset password page");
+        }
+
+        // Enter the email for Email Field
+        loginAccountPage.getResetEmailField("Test@test.com");
+        loginAccountPage.getResetLinkSendButton();
+
+        String resetAfterExpectedLoginPageHeading = loginAccountPage.afterResetLoginPage();
+        String resetAfterActuallyLoginPageHeading2 = "Log in to your Account" ;
+
+        if(resetAfterActuallyLoginPageHeading2.equals(resetAfterExpectedLoginPageHeading)) {
+            System.out.println("Actual Result: User is able to reset the password and log in with the new credentials.");
+            System.out.println("Status: PASS");
+        }
+        else{
+            System.out.println("Actual Result: User is unable to reset the password and log in with the new credentials.");
+            System.out.println("Status: Fail");
+        }
 
 
 
 
     }
+
+
 
     @AfterMethod
     public void tearDown() {

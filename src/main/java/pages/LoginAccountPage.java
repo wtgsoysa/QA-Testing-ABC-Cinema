@@ -16,6 +16,14 @@ public class LoginAccountPage {
     private By logout = By.xpath("/html/body/div[1]/nav[1]/div/div[2]/a");
     private By errorMessage = By.xpath("/html/body/div[1]");
 
+
+    //Reset Password section
+    private By forgotPassword = By.xpath("/html/body/div[1]/form/div/a");
+    private By resetPageHeading = By.xpath("/html/body/div[1]/p");
+    private By resetEmailField = By.xpath("//*[@id=\"email\"]");
+    private By resetLinkSendButton = By.xpath("/html/body/div[1]/a/div");
+    private By afterResetLoginPage = By.xpath("/html/body/h1");
+
     public LoginAccountPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -44,6 +52,26 @@ public class LoginAccountPage {
 
     public String gerErrorMessage() {
         return driver.findElement(errorMessage).getText();
+    }
+
+    public void forgotPassword() {
+        driver.findElement(forgotPassword).click();
+    }
+
+    public String getResetPageHeading() {
+        return driver.findElement(resetPageHeading).getText();
+    }
+
+    public void getResetEmailField(String reset_email) {
+        driver.findElement(resetEmailField).sendKeys(reset_email);
+    }
+
+    public void getResetLinkSendButton() {
+        driver.findElement(resetLinkSendButton).click();
+    }
+
+    public String afterResetLoginPage() {
+        return driver.findElement(afterResetLoginPage).getText();
     }
 
 
