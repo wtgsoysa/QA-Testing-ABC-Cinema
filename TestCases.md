@@ -113,50 +113,54 @@
 
 ### Test Case 009
 - **Test Case ID:** TC_Main_009
-- **Test Scenario:** Search for a movie by title.
-- **Precondition:** Movies are available in the database.
+- **Test Scenario:** Click a Movie Card.
+- **Precondition:** Movies are available in the 'Movies in Theater' Category.
 - **Test Steps:**
     1. Open the homepage.
-    2. Enter the movie title in the search bar.
-    3. Click the "Search" button.
-- **Expected Results:** The movie is displayed if it exists; otherwise, a "No Results Found" message appears.
+    2. Click the Movie Card in 'Movies in Theater'.
+    3. Navigate to the 'Movie Preview' page
+- **Expected Results:** Movie Preview Display in the 'Movie Booking' section.
 - **Actual Result:** [After Execution]
 - **Status:** [Pass / Fail]
 - **Remarks:** [Any Observation]
 
 ### Test Case 010
 - **Test Case ID:** TC_Main_010
-- **Test Scenario:** Filter movies by genre.
-- **Precondition:** Movies are categorized by genre in the database.
+- **Test Scenario:** Click the 'Book Now' Button.
+- **Precondition:** Selected movie preview display the page.
 - **Test Steps:**
-    1. Open the "Movies" page.
-    2. Select a genre from the filter options.
-    3. Verify the displayed movies match the selected genre.
-- **Expected Results:** Movies are filtered and displayed according to the selected genre.
+    1. Navigate to the 'Movie Preview Page'
+    2. Click the 'Book Now' Button
+    3. Navigate to the 'Booking' section
+  
+- **Expected Results:** Navigate to th 'Booking' section.
 - **Actual Result:** [After Execution]
 - **Status:** [Pass / Fail]
 - **Remarks:** [Any Observation]
 
 ### Test Case 011
 - **Test Case ID:** TC_Main_011
-- **Test Scenario:** Add a movie to the watchlist.
-- **Precondition:** User is logged in.
+- **Test Scenario:** Movie Booking without select the date.
+- **Precondition:** User is book the ticket
 - **Test Steps:**
-    1. Navigate to a movie details page.
-    2. Click the "Add to Watchlist" button.
-- **Expected Results:** Movie is added to the user's watchlist.
+    1. Navigate to a booking section.
+    2. Select the location , Time 
+    3. Select the seat
+    4. Click the 'Continue to Payment' Button
+- **Expected Results:** Display error message "Please select a date to watch the movie"
 - **Actual Result:** [After Execution]
 - **Status:** [Pass / Fail]
 - **Remarks:** [Any Observation]
 
 ### Test Case 012
 - **Test Case ID:** TC_Main_012
-- **Test Scenario:** Remove a movie from the watchlist.
-- **Precondition:** User is logged in and has movies in their watchlist.
+- **Test Scenario:** Click the 'Continue to Payment' button without select the seat
+- **Precondition:** User in the booking section
 - **Test Steps:**
-    1. Open the "Watchlist" page.
-    2. Click the "Remove" button next to a movie.
-- **Expected Results:** Movie is removed from the user's watchlist.
+    1. Navigate to a booking section.
+    2. Select the location , Time , Date
+    3. Click the 'Continue to Payment' Button
+- **Expected Results:** Display error message "Please select a seat to watch the movie"
 - **Actual Result:** [After Execution]
 - **Status:** [Pass / Fail]
 - **Remarks:** [Any Observation]
@@ -171,7 +175,7 @@
     3. Choose the number of tickets.
     4. Click the "Purchase" button.
     5. Complete the payment process.
-- **Expected Results:** User successfully purchases the ticket and receives a confirmation.
+- **Expected Results:** User successfully navigate to the 'Payment Summary Page'.
 - **Actual Result:** [After Execution]
 - **Status:** [Pass / Fail]
 - **Remarks:** [Any Observation]
@@ -191,12 +195,13 @@
 
 ### Test Case 015
 - **Test Case ID:** TC_Main_015
-- **Test Scenario:** View promotions on the homepage.
-- **Precondition:** Active promotions exist in the system.
+- **Test Scenario:** Validate the reservation summary
+- **Precondition:** Navigate to the 'Reservation Summary Page'
 - **Test Steps:**
-    1. Open the homepage.
-    2. Scroll to the "Promotions" section.
-- **Expected Results:** Promotions are displayed with correct details.
+    1. Navigate to the 'Reservation' summary page.
+    2. Enter the 'Full Name' , 'Mobile Number' , 'Email Address' , 'Card Information'
+    3. Click the 'Continue' Button 
+- **Expected Results:** Display 'Payment Success'
 - **Actual Result:** [After Execution]
 - **Status:** [Pass / Fail]
 - **Remarks:** [Any Observation]
@@ -214,55 +219,8 @@
 - **Status:** [Pass / Fail]
 - **Remarks:** [Any Observation]
 
-### Test Case 017
-- **Test Case ID:** TC_Main_017
-- **Test Scenario:** View user profile details.
-- **Precondition:** User is logged in.
-- **Test Steps:**
-    1. Open the "Profile" page.
-    2. Verify the displayed user details are accurate.
-- **Expected Results:** User profile details are displayed correctly.
-- **Actual Result:** [After Execution]
-- **Status:** [Pass / Fail]
-- **Remarks:** [Any Observation]
 
-### Test Case 018
-- **Test Case ID:** TC_Main_018
-- **Test Scenario:** Update user profile information.
-- **Precondition:** User is logged in.
-- **Test Steps:**
-    1. Open the "Profile" page.
-    2. Edit the user information.
-    3. Save the changes.
-- **Expected Results:** User profile information is updated successfully.
-- **Actual Result:** [After Execution]
-- **Status:** [Pass / Fail]
-- **Remarks:** [Any Observation]
 
-### Test Case 019
-- **Test Case ID:** TC_Main_019
-- **Test Scenario:** View booking history.
-- **Precondition:** User has made previous bookings.
-- **Test Steps:**
-    1. Open the "Booking History" page.
-    2. Verify the displayed history matches the user's previous bookings.
-- **Expected Results:** Booking history is displayed accurately.
-- **Actual Result:** [After Execution]
-- **Status:** [Pass / Fail]
-- **Remarks:** [Any Observation]
-
-### Test Case 020
-- **Test Case ID:** TC_Main_020
-- **Test Scenario:** Contact customer support.
-- **Precondition:** User requires assistance.
-- **Test Steps:**
-    1. Open the "Contact Us" page.
-    2. Fill in the support form with details.
-    3. Submit the form.
-- **Expected Results:** Support request is submitted successfully, and the user receives a confirmation.
-- **Actual Result:** [After Execution]
-- **Status:** [Pass / Fail]
-- **Remarks:** [Any Observation]
 
 
 # Admin Test Cases Documentation
