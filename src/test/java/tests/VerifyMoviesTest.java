@@ -1,258 +1,150 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.VerifyMoviesPage;
 import testBase.TestBase;
+import utils.ExtentManager;
 
 import java.util.List;
 
 public class VerifyMoviesTest extends TestBase {
     VerifyMoviesPage verifyMoviesPage;
+    ExtentTest test;
+
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         initializerDriver();
         verifyMoviesPage = new VerifyMoviesPage(driver);
     }
 
     @Test(priority = 1)
-    public void verifyMoviesTest11(){
-        System.out.println("\n--------------|| ABC_CINEMA_MAIN_WEBSITE_TEST ||---------------");
-        System.out.println("Movies Category Test Suite");
+    public void verifyMoviesTest11() {
+        test = ExtentManager.createTest("Movies in Theaters and Movies Releasing Soon Test").assignCategory("Movies Category");
 
-        // Test Case 006:
-        System.out.println("\nTest Case ID: TC_Main_006");
-        System.out.println("Test Scenario: Display movies categorized as \"Movies in Theaters\" and \"Movies Releasing Soon\".");
+        test.log(Status.INFO, "Verifying Movies in Theaters and Movies Releasing Soon categories");
 
-        String expectedMovieInTheatersHeading = verifyMoviesPage.getMoviesInTheaterHeading();
-        String actualMoviesInTheatersHeading = "Movies in Theaters";
+        String expectedMovieInTheatersHeading = "Movies in Theaters";
+        String actualMovieInTheatersHeading = verifyMoviesPage.getMoviesInTheaterHeading();
 
-        if(expectedMovieInTheatersHeading.equals(actualMoviesInTheatersHeading)){
-            System.out.println("Navigate to 'Movies in Theaters' page Successfully");
-        }
-        else{
-            System.out.println("Navigate to 'Movies in Theaters' page Failed");
+        if (actualMovieInTheatersHeading.equals(expectedMovieInTheatersHeading)) {
+            test.log(Status.PASS, "'Movies in Theaters' heading displayed correctly.");
+        } else {
+            test.log(Status.FAIL, "'Movies in Theaters' heading mismatch.");
+            Assert.fail();
         }
 
-        // Get movies in both sections
         List<WebElement> moviesInTheaters = verifyMoviesPage.getMoviesInTheaterSection();
-        List<WebElement> moviesReleasingSoon = verifyMoviesPage.getMoviesReleasingSection();
-
-        // Verify if movies exist in "Movies in Theaters" section
         if (!moviesInTheaters.isEmpty()) {
-            System.out.println("Actual Results : 'Movies in Theaters' section contains movies.");
-            System.out.println("Status : Pass");
+            test.log(Status.PASS, "'Movies in Theaters' section contains movies.");
         } else {
-            System.out.println("Actual Results : 'Movies in Theaters' section is empty.");
-            System.out.println("Status : Failed");
+            test.log(Status.FAIL, "'Movies in Theaters' section is empty.");
+            Assert.fail();
         }
 
-        // Verify if movies exist in "Movies Releasing Soon" section
+        List<WebElement> moviesReleasingSoon = verifyMoviesPage.getMoviesReleasingSection();
         if (!moviesReleasingSoon.isEmpty()) {
-            System.out.println("Actual Results : 'Movies Releasing Soon' section contains movies.");
-            System.out.println("Status : Pass");
+            test.log(Status.PASS, "'Movies Releasing Soon' section contains movies.");
         } else {
-            System.out.println("Actual Results : 'Movies Releasing Soon' section is empty.");
-            System.out.println("Status : Failed");
+            test.log(Status.FAIL, "'Movies Releasing Soon' section is empty.");
+            Assert.fail();
         }
-
-
     }
 
-    @Test (priority = 2)
-    public void viewAllMoviesInTheatersTest(){
+    @Test(priority = 2)
+    public void viewAllMoviesInTheatersTest() {
+        test = ExtentManager.createTest("View All Movies in Theaters Test").assignCategory("Movies Category");
 
-        // Test Case 007:
-        System.out.println("\nTest Case ID: TC_Main_007");
-        System.out.println("Test Scenario : View movie details page for \"Movies in Theaters\"");
+        test.log(Status.INFO, "Verifying the View All functionality for Movies in Theaters");
 
-        // Click the Movies Releasing Soon (View All)
         verifyMoviesPage.setMoviesInTheaterHeading();
 
-        String expectedMoviesInTheatersViewAllHeading = verifyMoviesPage.getMoviesInTheaterHeading();
-        String actualMoviesInTheatersViewAllHeading = "Movies in Theaters";
+        String expectedMoviesInTheatersViewAllHeading = "Movies in Theaters";
+        String actualMoviesInTheatersViewAllHeading = verifyMoviesPage.getMoviesInTheaterHeading();
 
-        if(actualMoviesInTheatersViewAllHeading.equals(expectedMoviesInTheatersViewAllHeading)){
-            System.out.println("Navigate to 'Movies in Theaters' page Successfully");
-        }
-        else{
-            System.out.println("Navigate to 'Movies in Theaters' page Failed");
-        }
-
-        // Get movies in both sections
-        List<WebElement> moviesInTheatersViewAll = verifyMoviesPage.allMoviesInTheatersViewAll();
-        List<WebElement> moviesReleasingSoonViewAll = verifyMoviesPage.getMoviesReleasingSection();
-
-        // Verify if movies exist in "Movies in Theaters" section
-        if (!moviesInTheatersViewAll.isEmpty()) {
-            System.out.println("Actual Results : 'Movies in Theaters' section contains movies.");
-            System.out.println("Status : Pass");
+        if (actualMoviesInTheatersViewAllHeading.equals(expectedMoviesInTheatersViewAllHeading)) {
+            test.log(Status.PASS, "'Movies in Theaters' page navigated successfully.");
         } else {
-            System.out.println("Actual Results : 'Movies in Theaters' section is empty.");
-            System.out.println("Status : Failed");
+            test.log(Status.FAIL, "'Movies in Theaters' page navigation failed.");
+            Assert.fail();
         }
 
-
-
-
-
+        List<WebElement> moviesInTheatersViewAll = verifyMoviesPage.allMoviesInTheatersViewAll();
+        if (!moviesInTheatersViewAll.isEmpty()) {
+            test.log(Status.PASS, "'Movies in Theaters' section contains movies.");
+        } else {
+            test.log(Status.FAIL, "'Movies in Theaters' section is empty.");
+            Assert.fail();
+        }
     }
 
-    @Test (priority = 3)
-    public void viewAllMoviesReleasingSoonTest(){
+    @Test(priority = 3)
+    public void viewAllMoviesReleasingSoonTest() {
+        test = ExtentManager.createTest("View All Movies Releasing Soon Test").assignCategory("Movies Category");
 
-        // Test Case 007:
-        System.out.println("\nTest Case ID: TC_Main_008");
-        System.out.println("Test Scenario : View movie details page for \"Movies Releasing Soon\"");
+        test.log(Status.INFO, "Verifying the View All functionality for Movies Releasing Soon");
 
-        // Click the Movies Releasing Soon (View All)
         verifyMoviesPage.clickMoviesReleasingSoonViewAll();
 
-        String expectedMoviesReleasingSoonAllHeading = verifyMoviesPage.getMoviesReleasingSoonViewAllHeading();
-        String actualMoviesReleasingSoonViewAllHeading = "Movies Releasing Soon";
+        String expectedMoviesReleasingSoonAllHeading = "Movies Releasing Soon";
+        String actualMoviesReleasingSoonViewAllHeading = verifyMoviesPage.getMoviesReleasingSoonViewAllHeading();
 
-        if(actualMoviesReleasingSoonViewAllHeading.equals(expectedMoviesReleasingSoonAllHeading)){
-            System.out.println("Navigate to 'Movies Releasing Soon' page Successfully");
+        if (actualMoviesReleasingSoonViewAllHeading.equals(expectedMoviesReleasingSoonAllHeading)) {
+            test.log(Status.PASS, "'Movies Releasing Soon' page navigated successfully.");
+        } else {
+            test.log(Status.FAIL, "'Movies Releasing Soon' page navigation failed.");
+            Assert.fail();
         }
-        else{
-            System.out.println("Navigate to 'Movies Releasing Soon' page Failed");
-        }
-
-        // Get movies in both sections
 
         List<WebElement> moviesReleasingSoonViewAll = verifyMoviesPage.getMoviesReleasingSection();
-
-        // Verify if movies exist in "Movies in Theaters" section
         if (!moviesReleasingSoonViewAll.isEmpty()) {
-            System.out.println("Actual Results : 'Movies Releasing Soon' section contains movies.");
-            System.out.println("Status : Pass");
+            test.log(Status.PASS, "'Movies Releasing Soon' section contains movies.");
         } else {
-            System.out.println("Actual Results : 'Movies Releasing Soon' section is empty.");
-            System.out.println("Status : Failed");
+            test.log(Status.FAIL, "'Movies Releasing Soon' section is empty.");
+            Assert.fail();
         }
-
-
     }
 
-    @Test (priority = 4)
+    @Test(priority = 4)
     public void moviePreviewTest() {
+        test = ExtentManager.createTest("Movie Preview Test").assignCategory("Movie Details");
 
-        // Test Case 009:
-        System.out.println("\nTest Case ID: TC_Main_009");
-        System.out.println("Test Scenario : Click a Movie Card");
+        test.log(Status.INFO, "Verifying movie preview functionality.");
 
-        //Click the movie card -> 1 st of the Card Section
         verifyMoviesPage.clickMovieCard();
 
-        String expectedMovieTitle = verifyMoviesPage.getTheMovieTitle();
-        String actualMovieTitle = "Wicked";
+        String expectedMovieTitle = "Wicked";
+        String actualMovieTitle = verifyMoviesPage.getTheMovieTitle();
 
-        if(actualMovieTitle.equals(expectedMovieTitle)){
-            System.out.println("Navigate to 'Movies Preview' page Successfully");
-            System.out.println("Actual Results : Movie Preview Display in the 'Movie Booking' section.");
-            System.out.println("Status : Pass");
-        }
-        else{
-            System.out.println("Navigate to 'Movies Preview' page Failed");
-            System.out.println("Actual Results : Movie Preview Display is empty.");
-            System.out.println("Status : Failed");
+        if (actualMovieTitle.equals(expectedMovieTitle)) {
+            test.log(Status.PASS, "Navigated to Movie Preview page successfully.");
+        } else {
+            test.log(Status.FAIL, "Navigation to Movie Preview page failed.");
+            Assert.fail();
         }
 
-        // Test Case 010:
-        System.out.println("\nTest Case ID: TC_Main_010");
-        System.out.println("Test Scenario : Click the 'Book Now' Button.");
-
-        //Click the 'Book Now' Button
+        test.log(Status.INFO, "Verifying the 'Book Now' button functionality.");
         verifyMoviesPage.clickBookNowButton();
 
-        String expectedBookNowSection = verifyMoviesPage.getBookingSection();
-        String actualBookNowSection = "Select Your Seats Here";
+        String expectedBookNowSection = "Select Your Seats Here";
+        String actualBookNowSection = verifyMoviesPage.getBookingSection();
 
-        if(actualBookNowSection.equals(expectedBookNowSection)){
-            System.out.println("Navigate to 'Booking' section Successfully");
-            System.out.println("Actual Results : Booking Display in the 'Booking Booking' section.");
-            System.out.println("Status : Pass");
+        if (actualBookNowSection.equals(expectedBookNowSection)) {
+            test.log(Status.PASS, "Navigated to 'Booking' section successfully.");
+        } else {
+            test.log(Status.FAIL, "Navigation to 'Booking' section failed.");
+            Assert.fail();
         }
-        else{
-            System.out.println("Navigate to 'Booking' section Failed");
-            System.out.println("Actual Results : Booking Display is empty.");
-            System.out.println("Status : Failed");
-        }
-
-        //Booking a movie with different ways
-        System.out.println("\nTest Case ID: TC_Main_013");
-        System.out.println("Test Scenario : User is logged in and selects a movie with available showtimes.");
-
-        //Cannot select the Location , Time
-
-        verifyMoviesPage.selectDatePicker("03/02/2025");
-
-        verifyMoviesPage.clickContinuePayment();
-
-        String expectedReservationSummary = verifyMoviesPage.getReservationSummary();
-        String actualReservationSummary = "Reservation Summary";
-
-        if(actualReservationSummary.equals(expectedReservationSummary)){
-            System.out.println("Navigate to 'Reservation' page Successfully");
-            System.out.println("Actual Results : Reservation summary in the 'Reservation' section.");
-            System.out.println("Status : Pass");
-        }
-        else{
-            System.out.println("Navigate to 'Reservation' page Failed");
-            System.out.println("Actual Results : Reservation summary is failed");
-            System.out.println("Status : Failed");
-        }
-
-        //Booking a movie with different ways
-        System.out.println("\nTest Case ID: TC_Main_015");
-        System.out.println("Test Scenario : Validate the reservation summary");
-
-        verifyMoviesPage.payementName("Test");
-        verifyMoviesPage.payementMobileNumber("0123456789");
-        verifyMoviesPage.payementEmail("Test@test.com");
-        verifyMoviesPage.payementCardNumber("1111 2222 3333 4444");
-        verifyMoviesPage.payementDate("03/02/2025");
-        verifyMoviesPage.payementCVC("898");
-        verifyMoviesPage.payementCheckBox();
-
-        verifyMoviesPage.payementContinue();
-
-        String expectdPaymentSucess = "";
-        String actualPaymentSucess = "Payment Success";
-
-        if (expectdPaymentSucess.equals(actualPaymentSucess)){
-            System.out.println("Navigate to 'Payment' page Successfully");
-            System.out.println("Actual Results : Payment Sucess");
-            System.out.println("Status : Pass");
-        }
-        else{
-            System.out.println("Navigate to 'Payment' page Failed");
-            System.out.println("Actual Results : Payment Sucess");
-            System.out.println("Status : Failed");
-        }
-
-
-
-
-
-
-
-
-
-
     }
 
-
-
-
-
-
-
+    @AfterMethod
+    public void tearDown() {
+        ExtentManager.flushReports();
+        driver.quit();
+    }
 }

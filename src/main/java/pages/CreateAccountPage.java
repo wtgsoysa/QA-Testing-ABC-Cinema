@@ -1,7 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class CreateAccountPage {
 
@@ -54,6 +56,16 @@ public class CreateAccountPage {
     public String getLoginPageHeading() {
         return driver.findElement(loginPageHeading).getText();
     }
+
+    public boolean isErrorMessageDisplayed() {
+        try {
+            WebElement errorMessage = driver.findElement(By.xpath("xpath-of-error-message")); // Replace with the actual XPath
+            return errorMessage.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
 
 
 
